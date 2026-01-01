@@ -1,1 +1,1 @@
-web: gunicorn society_management.wsgi
+web: gunicorn config.wsgi
