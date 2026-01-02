@@ -28,7 +28,7 @@ class MaintenancePayment(models.Model):
     amount = models.PositiveIntegerField()
     month = models.CharField(max_length=20, choices=MONTH_CHOICES)
     payment_mode = models.CharField(max_length=10, choices=PAYMENT_MODES)
-    receipt = models.ImageField(upload_to='payments/')
+    receipt_url = models.URLField(blank=True, null=True)
     paid_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Expense(models.Model):
     amount = models.PositiveIntegerField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     month = models.CharField(max_length=20, choices=MONTH_CHOICES)
-    bill = models.ImageField(upload_to='expenses/')
+    bill_url = models.URLField(blank=True, null=True)
     added_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
